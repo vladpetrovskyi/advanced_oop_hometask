@@ -21,7 +21,7 @@ public class MainApp {
             shapesList.add(circle.getRandomShape());
         } while ((int) (Math.random() * 100) % 2 == 0);
         for (Shape shape : shapesList) {
-            System.out.println(shape.toString());
+            System.out.println(shape.draw());
         }
     }
 }

@@ -2,22 +2,16 @@ public class Circle extends Shape {
     private double radius;
 
     @Override
-    public Circle paint() {
-        return new Circle();
-    }
-
-    @Override
     public Shape getRandomShape() {
-        Circle circle = paint();
+        Circle circle = new Circle();
         circle.setRadius(Math.random() * 100);
-        circle.setColor();
-        circle.area = (Math.PI * Math.pow(circle.getRadius(), 2));
+        circle.setColor(getRandomColor());
         return circle;
     }
 
     @Override
-    public String toString() {
-        return super.toString() + "радиус: " + Math.round(getRadius()) + " ед.";
+    public String draw() {
+        return super.draw() + "радиус: " + Math.round(getRadius()) + " ед.";
     }
 
     public double getRadius() {
@@ -26,5 +20,10 @@ public class Circle extends Shape {
 
     public void setRadius(double radius) {
         this.radius = radius;
+    }
+
+    @Override
+    public double getArea() {
+        return (Math.PI * Math.pow(this.radius, 2));
     }
 }

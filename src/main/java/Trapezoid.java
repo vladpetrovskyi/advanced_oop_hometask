@@ -1,25 +1,21 @@
 public class Trapezoid extends Shape{
-    private double base1, base2, height;
-
-    @Override
-    public Trapezoid paint() {
-        return new Trapezoid();
-    }
+    private double base1;
+    private double base2;
+    private double height;
 
     @Override
     public Shape getRandomShape() {
-        Trapezoid trapezoid = paint();
+        Trapezoid trapezoid = new Trapezoid();
         trapezoid.setBase1(Math.random() * 100);
         trapezoid.setBase2(Math.random() * 100);
         trapezoid.setHeight(Math.random() * 100);
-        trapezoid.setColor();
-        trapezoid.area = ((getBase1() + getBase2())/2) * getHeight();
+        trapezoid.setColor(getRandomColor());
         return trapezoid;
     }
 
     @Override
-    public String toString() {
-        return super.toString() + "основа 1: " + Math.round(getBase1()) + " ед., основа 2: "
+    public String draw() {
+        return super.draw() + "основа 1: " + Math.round(getBase1()) + " ед., основа 2: "
                 + Math.round(getBase2()) + " ед., высота: " + Math.round(getHeight()) + " ед.";
     }
 
@@ -48,6 +44,6 @@ public class Trapezoid extends Shape{
     }
 
     public double getArea() {
-       return area;
+       return ((this.base1 + this.base2)/2) * this.height;
     }
 }

@@ -10,20 +10,20 @@ public class Square extends Shape {
     }
 
     @Override
-    public Square paint(){
-        return new Square();
-    }
-
-    @Override
     public Square getRandomShape() {
-        Square square = paint();
+        Square square = new Square();
         square.setSide(Math.random() * 100);
-        square.setColor();
-        square.area = square.getSide() * square.getSide();
+        square.setColor(getRandomColor());
         return square;
     }
 
-    public String toString() {
-        return super.toString() + "длина стороны: " + Math.round(this.getSide()) + " ед.";
+    @Override
+    public double getArea() {
+        return this.getSide() * this.getSide();
+    }
+
+    @Override
+    public String draw() {
+        return super.draw() + "длина стороны: " + Math.round(this.getSide()) + " ед.";
     }
 }

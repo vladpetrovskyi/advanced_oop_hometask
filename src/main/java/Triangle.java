@@ -1,18 +1,13 @@
 public class Triangle extends Shape {
-    private double base, height;
-
-    @Override
-    public Triangle paint() {
-        return new Triangle();
-    }
+    private double base;
+    private double height;
 
     @Override
     public Shape getRandomShape() {
-        Triangle triangle = paint();
+        Triangle triangle = new Triangle();
         triangle.setBase(Math.random() * 100);
         triangle.setHeight(Math.random() * 100);
-        triangle.setColor();
-        triangle.area = triangle.base * triangle.height /2;
+        triangle.setColor(getRandomColor());
         return triangle;
     }
 
@@ -37,9 +32,14 @@ public class Triangle extends Shape {
     }
 
     @Override
-    public String toString() {
-        return super.toString() + "длина основы: " + Math.round(this.getBase()) + " ед., длина высоты: "
+    public String draw() {
+        return super.draw() + "длина основы: " + Math.round(this.getBase()) + " ед., длина высоты: "
                 + Math.round(this.getHeight()) + " ед., длина гипотенузы: "
                 + Math.round(getHypotenuse(this)) + " ед.";
+    }
+
+    @Override
+    public double getArea() {
+        return this.base * this.height /2;
     }
 }
