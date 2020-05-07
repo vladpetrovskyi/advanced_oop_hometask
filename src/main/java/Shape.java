@@ -1,5 +1,16 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Shape {
     private Color color;
+    private final static Map<Object, String> SHAPE_MAP = new HashMap<>();
+
+    static {
+        SHAPE_MAP.put(Square.class, "квадрат");
+        SHAPE_MAP.put(Triangle.class, "треугольник");
+        SHAPE_MAP.put(Circle.class, "круг");
+        SHAPE_MAP.put(Trapezoid.class, "трапеция");
+    }
 
     public abstract Shape getRandomShape();
 
@@ -14,17 +25,11 @@ public abstract class Shape {
     }
 
     public String getShapeClass() {
-        return this instanceof Square ? "квадрат"
-                : (this instanceof Triangle ? "треугольник"
-                : (this instanceof Circle ? "круг" : "трапеция"));
+        return SHAPE_MAP.get(this.getClass());
     }
 
     public Color getRandomColor() {
-        int i = (int) (Math.random() * 10);
-        return i == 7 ? Color.BLUE : (i == 6 ? Color.GREEN
-                : (i == 5 ? Color.RED : (i == 4 ? Color.ORANGE
-                : (i == 3 ? Color.YELLOW : (i == 2 ? Color.VIOLET
-                : (i == 1 ? Color.BLACK : Color.WHITE))))));
+        return Color.values()[(int) (Math.random() * 4)];
     }
 
     public String draw() {
